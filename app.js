@@ -18,11 +18,13 @@ function updatePhoneNumber(isIncreasing){
 
 document.getElementById('phone-plus').addEventListener('click', function(){
    updatePhoneNumber(true);
+   calculateTotal();
 
 });
 
 document.getElementById('phone-minus').addEventListener('click', function(){
    updatePhoneNumber(false);
+   calculateTotal();
 });
 // second product 
 
@@ -43,7 +45,23 @@ function updateProductCase(isIncreasings){
 
 document.getElementById('case-plus').addEventListener('click', function(){
   updateProductCase(true);
+  calculateTotal();
 });
 document.getElementById('case-minus').addEventListener('click', function(){
    updateProductCase(false);
+   calculateTotal();
 });
+// calculate total
+function calculateTotal(){
+   const phonePrice= document.getElementById('phone-total')
+   const casePrice= document.getElementById('case-total')
+   const subTotal= document.getElementById('sub-total')
+   subTotal.innerText= parseFloat(phonePrice.innerText)+ parseFloat(casePrice.innerText); 
+
+   const taxAmount= document.getElementById('tax-amount');
+   
+   // total price
+   const totalPrice= document.getElementById('total-price');
+   totalPrice.innerText= parseFloat(subTotal.innerText) + parseFloat(taxAmount.innerText);
+
+}
